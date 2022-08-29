@@ -1,11 +1,12 @@
 
 // defines songs as 
-let var songs = [];
+let songs = [];
 
 function start(){ 
 
     var link = readLine("What is the link of the playlist you'd like to import? ");
     getSpotify(link);
+    print("The songs on your playlist will be:" + songs + ".");
 
 }
 
