@@ -2,6 +2,9 @@
 // defines songs as 
 let songs = [];
 
+var playlistId = '';
+var gplaylist = null;
+
 function start(){ 
 
     var link = readLine("What is the link of the playlist you'd like to import? ");
@@ -10,18 +13,52 @@ function start(){
 
 }
 
+function gotPlaylist(playlist){
+        console.log("Playlist!!!" + playlist);
+        gplaylist = playlist;
+        var elementData = document.getElementById("playlistData");
+        elementData.innerText = JSON.stringify(playlist);
+
+        // Loop over tracks and print out list.
+        for( i = 0; i < playlist.items.length; i++ ){
+            console.log(playlist.items[i].track);
+        }
+}
+
+function gotAccessToken(value){
+    if(!value){
+        alert("Failed to get access token :((((((");
+    } else {
+        console.log("Access Token: " + value);
+        var p2 = get_playlist(playlistId, value);
+        p2.then(
+            gotPlaylist,
+            function(error){
+                alert("ERRR");
+
+            }
+        )
+    }
+}
+
 //this function gets the songs from the spotify link and adds them to a list/array
 
-function getSpotify(link){
+function getSpotify(){
+    playlistId = document.getElementById("spotifyPlaylistInput").value;
+    var link = playlistId.split('/')
+    playlistId = link[link.length-1];
 
-    //gets the legth of the playlist, idk if it should go in the loop or before/after the loop
-    var COUNT = songs.length;
+    var clientId = document.getElementById("clientId").value;
 
-    //count is the number of songs in the playlist
-    for(var i = 0; i < COUNT; i++){
-        
-        arr.push(title + "by" + artist);
+    var secretClientId = document.getElementById("secretClientId").value;
 
-    }
-    
+    console.log( playlistId + " " + clientId + " " + secretClientId );
+    var p = get_access_token(clientId, secretClientId);
+    p.then(
+        gotAccessToken,
+        function(error){
+            alert("Hey. No." + error);
+        }
+    );
+
 }

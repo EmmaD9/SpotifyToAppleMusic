@@ -46,7 +46,5 @@ function get_playlist(playlist_id, token){
          headers: headersList
        }).then(function(response) {
          return response.json();
-       }).then(function(data) {
-         console.log(data);
        });
 }

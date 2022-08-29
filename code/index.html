@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Emma's Title</title>
-  <meta name="description" content="">
+  <meta name="description" content="This is Emma's description.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:title" content="">
@@ -25,7 +25,29 @@
 <body>
 
   <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
+  <H1>Welcome to Emma's attempt at the spotify to apple music playlist program.</H1>
+  <label for="spotifyPlaylistInput">Enter spotify playlist: </label>
+  <br>
+  <input type="text" id="spotifyPlaylistInput"></input>
+
+  <br>
+  <label for="clientId">Enter client Id: </label>
+  <br>
+  <input type="text" id="clientId"></input>
+
+  <br>
+  <label for="secretClientId">Enter secret client Id: </label>
+  <br>
+  <input type="text" id="secretClientId"></input>
+  <br>
+  <button onclick="getSpotify()">go!</button>
+
+
+  <div id="playlistData">
+    
+  </div>
+
+
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/spotifyclient.js"></script>
